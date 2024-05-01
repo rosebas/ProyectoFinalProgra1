@@ -19,5 +19,7 @@ public class ClaseMain {
 
         LogicaFiles files = new LogicaFiles();
         files.menuPrincipal();
+        Javier javier = new Javier();
+        javier.hola();
     }
 }
