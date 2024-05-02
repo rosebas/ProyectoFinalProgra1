@@ -21,5 +21,9 @@ public class ClaseMain {
         files.menuPrincipal();
         Javier javier = new Javier();
         javier.hola();
+
+        //Referencia a la clase ExcelFiles
+        ExcelFiles alvaro = new ExcelFiles();
+        alvaro.holaTu();
     }
 }
