@@ -9,5 +9,7 @@ public class Javier {
         String tipoJavier =  scanner.next();
 
         System.out.println(tipoJavier);
+        System.out.println("hola soy albine");
+        System.out.println("hola soy albine");
     }
 }
