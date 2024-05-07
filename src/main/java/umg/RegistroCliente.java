@@ -13,4 +13,5 @@ public class RegistroCliente {
     private JTextField nombreUsuario;
     private JTextField dpiUsuario;
     private JButton confirmarButton;
+    private JLabel Fecha;
 }
