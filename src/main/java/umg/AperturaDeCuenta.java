@@ -10,5 +10,5 @@ public class AperturaDeCuenta {
     private JButton noSeXdButton;
     private JList list1;
     private JComboBox comboBox1;
-    private JTextField textField2;
+    private JTextField giTextField;
 }
