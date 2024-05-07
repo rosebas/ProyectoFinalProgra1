@@ -1,2 +1,5 @@
-package umg;public class ActualizacionCliente {
+package umg;
+
+public class ActualizacionCliente
+{
 }
