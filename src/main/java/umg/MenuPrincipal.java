@@ -1,6 +1,6 @@
 package umg;
 import java.util.Scanner;
-public class ExcelFiles {
+public class MenuPrincipal {
     Scanner scanner = new Scanner(System.in);
 
     public void holaTu() {
