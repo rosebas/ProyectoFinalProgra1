@@ -15,6 +15,8 @@ public class ActualizacionClientes extends javax.swing.JFrame {
      */
     public ActualizacionClientes() {
         initComponents();
+        this.setTitle("Actualización de Clientes");
+        this.setLocationRelativeTo(null);
     }
 
     /**

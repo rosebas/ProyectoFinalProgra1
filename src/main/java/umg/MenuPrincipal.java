@@ -15,6 +15,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public MenuPrincipal() {
         initComponents();
+        this.setTitle("Menu Principal");
+        this.setLocationRelativeTo(null);
     }
 
     /**

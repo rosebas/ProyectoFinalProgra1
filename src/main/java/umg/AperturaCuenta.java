@@ -15,6 +15,8 @@ public class AperturaCuenta extends javax.swing.JFrame {
      */
     public AperturaCuenta() {
         initComponents();
+        this.setTitle("Apertura de Cuenta");
+        this.setLocationRelativeTo(null);
     }
 
     /**

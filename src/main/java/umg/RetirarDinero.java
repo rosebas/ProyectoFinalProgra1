@@ -15,6 +15,8 @@ public class RetirarDinero extends javax.swing.JFrame {
      */
     public RetirarDinero() {
         initComponents();
+        this.setTitle("Retirar Dinero");
+        this.setLocationRelativeTo(null);
     }
 
     /**

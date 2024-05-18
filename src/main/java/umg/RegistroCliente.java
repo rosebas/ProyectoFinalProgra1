@@ -15,6 +15,8 @@ public class RegistroCliente extends javax.swing.JFrame {
      */
     public RegistroCliente() {
         initComponents();
+        this.setTitle("Registro de Cliete");
+        this.setLocationRelativeTo(null);
     }
 
     /**
