@@ -27,7 +27,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        irRegistroCliente = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -37,7 +37,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Registro Cliente");
+        irRegistroCliente.setText("Registro Cliente");
+        irRegistroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                irRegistroClienteActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Actualizacion Cliente");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +83,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
                         .addComponent(jButton5))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(irRegistroCliente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton4)))
                 .addGap(132, 132, 132))
@@ -95,7 +100,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1))
+                    .addComponent(irRegistroCliente))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -143,6 +148,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
        apertura.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void irRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irRegistroClienteActionPerformed
+        RegistroCliente registroCliente = new RegistroCliente();
+        this.setVisible(false);
+        registroCliente.setVisible(true);
+    }//GEN-LAST:event_irRegistroClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -179,7 +190,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton irRegistroCliente;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
