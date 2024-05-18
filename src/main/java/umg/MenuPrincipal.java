@@ -61,6 +61,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jButton4.setText("Realizar Deposito");
 
         jButton5.setText("Retirar Dinero");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Reportes");
 
@@ -153,6 +158,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.setVisible(false);
         registroCliente.setVisible(true);
     }//GEN-LAST:event_irRegistroClienteActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        RetirarDinero dinero = new  RetirarDinero ();
+        this.setVisible(false);
+        dinero.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
