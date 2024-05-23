@@ -151,17 +151,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-      AperturaCuenta apertura = new AperturaCuenta();
-       
-       
-       this.setVisible(false);
-       apertura.setVisible(true);
+      
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void irRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irRegistroClienteActionPerformed
-        RegistroCliente registroCliente = new RegistroCliente();
-        this.setVisible(false);
-        registroCliente.setVisible(true);
+        
     }//GEN-LAST:event_irRegistroClienteActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
