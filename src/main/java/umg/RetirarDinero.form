@@ -40,9 +40,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="botonRegresar" min="-2" pref="131" max="-2" attributes="0"/>
+                  <Component id="RegresarMenu" min="-2" pref="131" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <Component id="RetirarDinero" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
@@ -60,7 +60,7 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jTextField1" min="-2" pref="119" max="-2" attributes="0"/>
+                  <Component id="retirarMontoDinero" min="-2" pref="119" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
@@ -73,7 +73,7 @@
               <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="240" max="32767" attributes="0"/>
-                      <Component id="jTextField2" min="-2" pref="119" max="-2" attributes="0"/>
+                      <Component id="retirarIngresoCuenta" min="-2" pref="119" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -87,11 +87,11 @@
                   <EmptySpace pref="109" max="32767" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                  <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                  <Component id="retirarMontoDinero" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="botonRegresar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="RetirarDinero" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="RegresarMenu" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               </Group>
@@ -105,7 +105,7 @@
               <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
-                      <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
+                      <Component id="retirarIngresoCuenta" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="170" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -131,27 +131,27 @@
             <Property name="text" type="java.lang.String" value="Monto a retirar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="RetirarDinero">
           <Properties>
             <Property name="text" type="java.lang.String" value="Retirar"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="botonRegresar">
+        <Component class="javax.swing.JButton" name="RegresarMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Regresar al men&#xfa;"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonRegresarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegresarMenuActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="retirarMontoDinero">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="text" type="java.lang.String" value="Numero de cuenta"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="retirarIngresoCuenta">
         </Component>
       </SubComponents>
     </Container>
