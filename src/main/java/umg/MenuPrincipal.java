@@ -156,7 +156,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-      
+      AperturaCuenta aperturaCuenta = new AperturaCuenta();
+       this.setVisible(false);
+       aperturaCuenta.setVisible(true);
+       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void irRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irRegistroClienteActionPerformed
