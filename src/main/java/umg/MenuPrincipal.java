@@ -65,6 +65,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jButton4.setText("Realizar Deposito");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jButton5.setText("Retirar Dinero");
@@ -164,6 +169,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         dinero.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+      RealizarDeposito deposito = new RealizarDeposito();
+        this.setVisible(false);{
+        deposito.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+    }
     /**
      * @param args the command line arguments
      */
