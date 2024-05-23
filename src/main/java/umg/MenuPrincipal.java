@@ -155,6 +155,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void irRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irRegistroClienteActionPerformed
+        RegistroCliente goToRegistroCliente = new RegistroCliente();
+        this.setVisible(false);
+        goToRegistroCliente.setVisible(true);
         
     }//GEN-LAST:event_irRegistroClienteActionPerformed
 
