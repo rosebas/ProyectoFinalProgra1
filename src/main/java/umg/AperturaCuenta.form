@@ -35,10 +35,10 @@
                                   <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="AperturaSalidaFecha" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="aperturaIngresoMontoInicial" min="-2" max="-2" attributes="0"/>
-                                  <Component id="aperturaIngresoTipoCuenta" min="-2" max="-2" attributes="0"/>
+                                  <Component id="aperturaIngresoTipoCuenta" max="32767" attributes="0"/>
+                                  <Component id="AperturaSalidaFecha" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -151,15 +151,24 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="AperturaSalidaFecha">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AperturaSalidaFechaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="aperturaSalidaNumCuenta">
     </Component>
     <Component class="javax.swing.JTextField" name="aperturaIngresoDpi">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aperturaIngresoDpiActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botonIngresar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ingresar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonIngresarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botonRegresarMenu">
       <Properties>
@@ -178,6 +187,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aperturaIngresoTipoCuentaActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>

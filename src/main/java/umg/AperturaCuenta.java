@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package umg;
-
+import logicaInterna.LogicaAperturaCuenta;
+import java.time.LocalDate;
 /**
  *
  * @author ggeor
@@ -17,6 +18,15 @@ public class AperturaCuenta extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("Apertura de Cuenta");
+        
+        LocalDate fechaHoy = LocalDate.now();
+        
+        String hoy = fechaHoy.toString();
+        AperturaSalidaFecha.setText(hoy);
+        
+        
+    }
+        
     }
 
     /**
@@ -63,7 +73,24 @@ public class AperturaCuenta extends javax.swing.JFrame {
             }
         });
 
+        AperturaSalidaFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AperturaSalidaFechaActionPerformed(evt);
+            }
+        });
+
+        aperturaIngresoDpi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aperturaIngresoDpiActionPerformed(evt);
+            }
+        });
+
         botonIngresar.setText("Ingresar");
+        botonIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonIngresarActionPerformed(evt);
+            }
+        });
 
         botonRegresarMenu.setText("Regresar");
         botonRegresarMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +100,11 @@ public class AperturaCuenta extends javax.swing.JFrame {
         });
 
         aperturaIngresoTipoCuenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MONETARIA", "AHORRO" }));
+        aperturaIngresoTipoCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aperturaIngresoTipoCuentaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,10 +121,10 @@ public class AperturaCuenta extends javax.swing.JFrame {
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel6))
                                 .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(AperturaSalidaFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(aperturaIngresoMontoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(aperturaIngresoTipoCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(aperturaIngresoTipoCuenta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(AperturaSalidaFecha)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
@@ -161,6 +193,27 @@ public class AperturaCuenta extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_botonRegresarMenuActionPerformed
+
+    private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
+        
+        String DPI = aperturaIngresoDpi.getText();
+        double montoInicial = Double.parseDouble(aperturaIngresoMontoInicial.getText());
+        String fecha = AperturaSalidaFecha.getText();
+        String tipoCuenta = (String) aperturaIngresoTipoCuenta.getSelectedItem();
+        
+    }//GEN-LAST:event_botonIngresarActionPerformed
+
+    private void aperturaIngresoDpiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aperturaIngresoDpiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aperturaIngresoDpiActionPerformed
+
+    private void aperturaIngresoTipoCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aperturaIngresoTipoCuentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aperturaIngresoTipoCuentaActionPerformed
+
+    private void AperturaSalidaFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AperturaSalidaFechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AperturaSalidaFechaActionPerformed
 
     /**
      * @param args the command line arguments
