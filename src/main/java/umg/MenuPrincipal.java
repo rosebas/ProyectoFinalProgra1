@@ -150,14 +150,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         ActualizacionClientes actualizacion = new ActualizacionClientes();
-        this.setVisible(false);{
-        actualizacion.setVisible(true);
-    }
+        this.setVisible(false);
+        {
+            actualizacion.setVisible(true);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-      
-       
+        AperturaCuenta irAperturaCuenta = new AperturaCuenta();
+        this.setVisible(false);
+        irAperturaCuenta.setVisible(true);
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void irRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irRegistroClienteActionPerformed
@@ -168,17 +171,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_irRegistroClienteActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        RetirarDinero dinero = new  RetirarDinero ();
+        RetirarDinero dinero = new RetirarDinero();
         this.setVisible(false);
         dinero.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-      RealizarDeposito deposito = new RealizarDeposito();
-        this.setVisible(false);{
-        deposito.setVisible(true);
+        RealizarDeposito deposito = new RealizarDeposito();
+        this.setVisible(false);
+        {
+            deposito.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
     }
+
     /**
      * @param args the command line arguments
      */
