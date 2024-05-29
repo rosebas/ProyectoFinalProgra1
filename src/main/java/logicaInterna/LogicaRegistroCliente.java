@@ -31,7 +31,7 @@ public class LogicaRegistroCliente {
             bw.write(nuevoCliente);
             bw.newLine();
 
-
+            
         } catch (Exception e) {
             System.out.println("Error al guardar el archivo " + e.getMessage());
         } finally {
