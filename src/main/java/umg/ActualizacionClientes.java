@@ -223,24 +223,13 @@ public class ActualizacionClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_inputActualizarOcupacionClienteActionPerformed
 
     private void confirmarActualizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActualizacionActionPerformed
-        LogicaActualizacionClientes actualizar = new LogicaActualizacionClientes();
         
-        String direccion= inputActualizarDireccionCliente.getText();
-        String dpi = inputActualizarDpiClientes.getText();
-        String telefono= inputActualizarTelefonoCliente.getText();
-        String correo = inputActualizarCorreoCliente.getText();
-        String ocupacion = inputActualizarOcupacionCliente.getText();
-        double ingresosMensuales = Double.parseDouble(inputActualizarIngresosClientes.getText());
-        
-        actualizar.actualizarCliente(direccion, dpi, telefono, correo, ocupacion, correo);
         
     }//GEN-LAST:event_confirmarActualizacionActionPerformed
 
     private void buscarDpiActualizacionClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarDpiActualizacionClienteActionPerformed
         LogicaActualizacionClientes buscar = new LogicaActualizacionClientes();
-        
-        String dpi = inputActualizarDpiClientes.getText();
-        buscar.buscarCliente(dpi);
+        buscar.buscarDpi(inputActualizarDpiClientes.getText());
         
     }//GEN-LAST:event_buscarDpiActualizacionClienteActionPerformed
 

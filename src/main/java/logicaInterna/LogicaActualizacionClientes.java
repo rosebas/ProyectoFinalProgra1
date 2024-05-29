@@ -15,22 +15,23 @@ import java.io.FileWriter;
  */
 public class LogicaActualizacionClientes {
 
-    String rutaArchivoTxt = System.getProperty("user.dir") + "/Clientes/clientes.txt";
+    String rutaArchivoClientesTxt = System.getProperty("user.dir") + "/Clientes/clientes.txt";
 
-    public void buscarCliente(String dpi) {
+    public void buscarDpi(String dpi) {
         FileReader lector = null;
         BufferedReader br = null;
 
         try {
-            lector = new FileReader(rutaArchivoTxt);
+            lector = new FileReader(rutaArchivoClientesTxt);
             br = new BufferedReader(lector);
             String linea;
 
             while ((linea = br.readLine()) != null) {
                 String[] partesLinea = linea.split(",");
 
-                String DpiCliente = partesLinea[0];
-                if (DpiCliente.equals(dpi)) {
+                String Dpi = partesLinea[0];
+                if (Dpi.equals(dpi)) {
+
                     String nombreCliente = partesLinea[1];
                     String apellidoCliente = partesLinea[2];
                     String direccionCliente = partesLinea[3];
@@ -38,8 +39,6 @@ public class LogicaActualizacionClientes {
                     String correoCliente = partesLinea[5];
                     String ocupacionCliente = partesLinea[6];
                     String ingresosCliente = partesLinea[7];
-                    // Llamada al método actualizarCliente con los datos correctos
-                    actualizarCliente(dpi, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, correoCliente, ocupacionCliente, ingresosCliente);
                     break;
                 }
             }
@@ -53,23 +52,24 @@ public class LogicaActualizacionClientes {
             }
         }
     }
-
-    public void actualizarCliente(String Dpi, String nombreCliente, String apellidoCliente, String direccionCliente, String dpiCliente, String telefonoCliente,
-            String correoCliente, String ocupacionCliente, String ingresosMensuales) {
-
+    
+    public void actualizarCliente(String dpi, String direccionCliente, String telefonoCliente, String correoCliente,
+            String ocupacionCliente, String ingresosCliente){
+        
         FileWriter escritor = null;
         BufferedWriter bw = null;
 
         try {
-            escritor = new FileWriter(rutaArchivoTxt, true);
+            escritor = new FileWriter(rutaArchivoClientesTxt, true);
             bw = new BufferedWriter(escritor);
-            String nuevoCliente = Dpi + "," + nombreCliente + "," + apellidoCliente + ","
-                    + direccionCliente + "," + telefonoCliente + "," + correoCliente + ","
-                    + ocupacionCliente + "," + ingresosMensuales;
-
+            String nuevoCliente = Dpi + "," + nombreCliente + "," + apellidoCliente + "," + 
+                    direccionCliente + "," + telefonoCliente + "," + correoCliente + "," + 
+                    ocupacionCliente + "," + ingresosMensuales;
+            
             bw.write(nuevoCliente);
             bw.newLine();
 
+            
         } catch (Exception e) {
             System.out.println("Error al guardar el archivo " + e.getMessage());
         } finally {
@@ -80,5 +80,7 @@ public class LogicaActualizacionClientes {
                 System.out.println("Error al cerrar el archivo " + e.getMessage());
             }
         }
+        
     }
+
 }
