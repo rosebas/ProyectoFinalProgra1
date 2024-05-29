@@ -5,9 +5,9 @@
 package logicaInterna;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
+//import java.io.BufferedWriter;
 import java.io.FileReader;
-import java.io.FileWriter;
+//import java.io.FileWriter;
 
 /**
  *
@@ -16,7 +16,65 @@ import java.io.FileWriter;
 public class LogicaActualizacionClientes {
 
     String rutaArchivoClientesTxt = System.getProperty("user.dir") + "/Clientes/clientes.txt";
+    private String direccionCliente;
+    private String telefonoCliente;
+    private String correoCliente;
+    private String ocupacionCliente;
+    private String ingresosCliente;
 
+    public LogicaActualizacionClientes() {
+    }
+
+    public LogicaActualizacionClientes(String direccionCliente, String telefonoCliente, String correoCliente, String ocupacionCliente, String ingresosCliente) {
+        this.direccionCliente = direccionCliente;
+        this.telefonoCliente = telefonoCliente;
+        this.correoCliente = correoCliente;
+        this.ocupacionCliente = ocupacionCliente;
+        this.ingresosCliente = ingresosCliente;
+    }
+
+    public String getDireccionCliente() {
+        return direccionCliente;
+    }
+
+    public void setDireccionCliente(String direccionCliente) {
+        this.direccionCliente = direccionCliente;
+    }
+
+    public String getTelefonoCliente() {
+        return telefonoCliente;
+    }
+
+    public void setTelefonoCliente(String telefonoCliente) {
+        this.telefonoCliente = telefonoCliente;
+    }
+
+    public String getCorreoCliente() {
+        return correoCliente;
+    }
+
+    public void setCorreoCliente(String correoCliente) {
+        this.correoCliente = correoCliente;
+    }
+
+    public String getOcupacionCliente() {
+        return ocupacionCliente;
+    }
+
+    public void setOcupacionCliente(String ocupacionCliente) {
+        this.ocupacionCliente = ocupacionCliente;
+    }
+
+    public String getIngresosCliente() {
+        return ingresosCliente;
+    }
+
+    public void setIngresosCliente(String ingresosCliente) {
+        this.ingresosCliente = ingresosCliente;
+    }
+
+    
+    
     public void buscarDpi(String dpi) {
         FileReader lector = null;
         BufferedReader br = null;
@@ -32,13 +90,11 @@ public class LogicaActualizacionClientes {
                 String Dpi = partesLinea[0];
                 if (Dpi.equals(dpi)) {
 
-                    String nombreCliente = partesLinea[1];
-                    String apellidoCliente = partesLinea[2];
-                    String direccionCliente = partesLinea[3];
-                    String telefonoCliente = partesLinea[4];
-                    String correoCliente = partesLinea[5];
-                    String ocupacionCliente = partesLinea[6];
-                    String ingresosCliente = partesLinea[7];
+                    setDireccionCliente(partesLinea[3]);
+                    setTelefonoCliente(partesLinea[4]);
+                    setCorreoCliente(partesLinea[5]);
+                    setOcupacionCliente(partesLinea[6]);
+                    setIngresosCliente(partesLinea[7]);
                     break;
                 }
             }
@@ -53,34 +109,5 @@ public class LogicaActualizacionClientes {
         }
     }
     
-    public void actualizarCliente(String dpi, String direccionCliente, String telefonoCliente, String correoCliente,
-            String ocupacionCliente, String ingresosCliente){
-        
-        FileWriter escritor = null;
-        BufferedWriter bw = null;
-
-        try {
-            escritor = new FileWriter(rutaArchivoClientesTxt, true);
-            bw = new BufferedWriter(escritor);
-            String nuevoCliente = Dpi + "," + nombreCliente + "," + apellidoCliente + "," + 
-                    direccionCliente + "," + telefonoCliente + "," + correoCliente + "," + 
-                    ocupacionCliente + "," + ingresosMensuales;
-            
-            bw.write(nuevoCliente);
-            bw.newLine();
-
-            
-        } catch (Exception e) {
-            System.out.println("Error al guardar el archivo " + e.getMessage());
-        } finally {
-
-            try {
-                bw.close();
-            } catch (Exception e) {
-                System.out.println("Error al cerrar el archivo " + e.getMessage());
-            }
-        }
-        
-    }
 
 }

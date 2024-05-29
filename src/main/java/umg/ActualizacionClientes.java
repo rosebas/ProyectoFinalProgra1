@@ -231,6 +231,12 @@ public class ActualizacionClientes extends javax.swing.JFrame {
         LogicaActualizacionClientes buscar = new LogicaActualizacionClientes();
         buscar.buscarDpi(inputActualizarDpiClientes.getText());
         
+        inputActualizarDireccionCliente.setText(buscar.getDireccionCliente());        
+        inputActualizarTelefonoCliente.setText(buscar.getTelefonoCliente());        
+        inputActualizarCorreoCliente.setText(buscar.getCorreoCliente());        
+        inputActualizarCorreoCliente.setText(buscar.getCorreoCliente());        
+        inputActualizarOcupacionCliente.setText(buscar.getOcupacionCliente());        
+        inputActualizarIngresosClientes.setText(buscar.getIngresosCliente());        
     }//GEN-LAST:event_buscarDpiActualizacionClienteActionPerformed
 
     /**
