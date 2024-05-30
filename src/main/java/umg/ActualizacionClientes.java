@@ -44,6 +44,8 @@ public class ActualizacionClientes extends javax.swing.JFrame {
         inputActualizarDpiClientes = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         buscarDpiActualizacionCliente = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        mensajesActualizacion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,12 +133,6 @@ public class ActualizacionClientes extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buscarDpiActualizacionCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(inputActualizarDpiClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(inputActualizarDireccionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -155,18 +151,31 @@ public class ActualizacionClientes extends javax.swing.JFrame {
                         .addGap(105, 105, 105)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(inputActualizarIngresosClientes)
-                            .addComponent(inputActualizarOcupacionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(inputActualizarOcupacionCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel8)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buscarDpiActualizacionCliente)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(inputActualizarDpiClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(22, 22, 22)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(confirmarActualizacion)
-                .addGap(41, 41, 41))
+                .addGap(28, 28, 28))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(mensajesActualizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,11 +207,15 @@ public class ActualizacionClientes extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(inputActualizarIngresosClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addGap(12, 12, 12)
+                .addComponent(mensajesActualizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirmarActualizacion)
                     .addComponent(jButton1))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         pack();
@@ -223,8 +236,21 @@ public class ActualizacionClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_inputActualizarOcupacionClienteActionPerformed
 
     private void confirmarActualizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActualizacionActionPerformed
+        LogicaActualizacionClientes actualizarCliente = new LogicaActualizacionClientes();
+        String dpi = inputActualizarDpiClientes.getText();
+        String direccion = inputActualizarDireccionCliente.getText();
+        String telefono = inputActualizarTelefonoCliente.getText();
+        String correo = inputActualizarCorreoCliente.getText();
+        String ocupacion = inputActualizarOcupacionCliente.getText();
+        String ingresos = inputActualizarIngresosClientes.getText();
         
+        actualizarCliente.actualizarCambios(dpi, direccion, telefono, correo, ocupacion, ingresos);
         
+        if(actualizarCliente.getCambiosCorrectos() == true){
+            mensajesActualizacion.setText("Cambios actualizados correctamente");
+        } else {
+            mensajesActualizacion.setText("Los cambios no se han podido actualizar");
+        }
     }//GEN-LAST:event_confirmarActualizacionActionPerformed
 
     private void buscarDpiActualizacionClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarDpiActualizacionClienteActionPerformed
@@ -234,7 +260,7 @@ public class ActualizacionClientes extends javax.swing.JFrame {
         inputActualizarDireccionCliente.setText(buscar.getDireccionCliente());        
         inputActualizarTelefonoCliente.setText(buscar.getTelefonoCliente());        
         inputActualizarCorreoCliente.setText(buscar.getCorreoCliente());        
-        inputActualizarCorreoCliente.setText(buscar.getCorreoCliente());        
+        //inputActualizarCorreoCliente.setText(buscar.getCorreoCliente());        
         inputActualizarOcupacionCliente.setText(buscar.getOcupacionCliente());        
         inputActualizarIngresosClientes.setText(buscar.getIngresosCliente());        
     }//GEN-LAST:event_buscarDpiActualizacionClienteActionPerformed
@@ -291,5 +317,7 @@ public class ActualizacionClientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel mensajesActualizacion;
     // End of variables declaration//GEN-END:variables
 }
