@@ -5,8 +5,10 @@
 package logicaInterna;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 //import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 //import java.io.FileWriter;
 
 /**
@@ -21,16 +23,19 @@ public class LogicaActualizacionClientes {
     private String correoCliente;
     private String ocupacionCliente;
     private String ingresosCliente;
+    private boolean cambiosCorrectos = false;
 
     public LogicaActualizacionClientes() {
     }
 
-    public LogicaActualizacionClientes(String direccionCliente, String telefonoCliente, String correoCliente, String ocupacionCliente, String ingresosCliente) {
+    public LogicaActualizacionClientes(String direccionCliente, String telefonoCliente, 
+            String correoCliente, String ocupacionCliente, String ingresosCliente, boolean cambiosCorrectos) {
         this.direccionCliente = direccionCliente;
         this.telefonoCliente = telefonoCliente;
         this.correoCliente = correoCliente;
         this.ocupacionCliente = ocupacionCliente;
         this.ingresosCliente = ingresosCliente;
+        this.cambiosCorrectos = cambiosCorrectos;
     }
 
     public String getDireccionCliente() {
@@ -73,8 +78,16 @@ public class LogicaActualizacionClientes {
         this.ingresosCliente = ingresosCliente;
     }
 
+    public boolean getCambiosCorrectos() {
+        return cambiosCorrectos;
+    }
+
+    public void setCambiosCorrectos(boolean cambiosCorrectos) {
+        this.cambiosCorrectos = cambiosCorrectos;
+    }
     
     
+
     public void buscarDpi(String dpi) {
         FileReader lector = null;
         BufferedReader br = null;
@@ -108,6 +121,55 @@ public class LogicaActualizacionClientes {
             }
         }
     }
-    
+
+    public void actualizarCambios(String dpi, String direccion, String telefono, String correo,
+        String ocupacion, String ingresos) {
+
+    FileWriter escritor = null;
+    BufferedWriter bw = null;
+
+    FileReader lector = null;
+    BufferedReader br = null;
+
+    try {
+        lector = new FileReader(rutaArchivoClientesTxt);
+        br = new BufferedReader(lector);
+        StringBuilder contenido = new StringBuilder();
+        String linea;
+
+        while ((linea = br.readLine()) != null) {
+            String[] partesLinea = linea.split(",");
+            String Dpi = partesLinea[0];
+            
+            if (Dpi.equals(dpi)) {
+                linea = partesLinea[0] + "," + partesLinea[1] + "," + partesLinea[2] + ","
+                        + direccion + "," + telefono + "," + correo + "," + ocupacion + "," + ingresos;
+                setCambiosCorrectos(true);
+            }
+
+            contenido.append(linea).append(System.lineSeparator());
+        }
+
+        br.close();
+
+        escritor = new FileWriter(rutaArchivoClientesTxt);
+        bw = new BufferedWriter(escritor);
+        bw.write(contenido.toString());
+
+    } catch (Exception e) {
+        System.out.println("Error al procesar el archivo: " + e.getMessage());
+    } finally {
+        try {
+            if (br != null) {
+                br.close();
+            }
+            if (bw != null) {
+                bw.close();
+            }
+        } catch (Exception e) {
+            System.out.println("Error al cerrar el archivo: " + e.getMessage());
+        }
+    }
+}  
 
 }

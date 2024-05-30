@@ -1,4 +1,4 @@
-
-3052523210203,Albino,Rosales,Guastatoya,553539578,ajajfdsajk,programador,65
-50505051151,Alvaro,Vasquez,Guastatoya,454544254,alvaro.edu.gt,programador,3000
+3052523210203,Albino,Rosales,Guastatoya,553539578,albino.gmail,programador,3800
+50505051151,Alvaro,Vasquez,Guastatoya,454544254,alvaro.edu.gt,programador,4000
 3033625200201,Didhyer,Ortiz,Momostenango,12345678,didiwinx@gmail.com,lolero,10000000000000
+123456789,Javier,Fajardo,Sanarate,58859878,javifa@gmail,estudiante,3800
