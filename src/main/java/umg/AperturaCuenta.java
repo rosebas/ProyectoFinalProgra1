@@ -27,7 +27,7 @@ public class AperturaCuenta extends javax.swing.JFrame {
 
         mostrarNombre.setEditable(false);
         AperturaSalidaFecha.setEditable(false);
-        
+
     }
 
     /**
@@ -186,31 +186,38 @@ public class AperturaCuenta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void volverMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverMenuActionPerformed
-        MenuPrincipal regresar = new MenuPrincipal();
+       MenuPrincipalCo retornar = new MenuPrincipalCo();
         this.setVisible(false);
-        regresar.setVisible(true);
+        retornar.setVisible(true);
     }//GEN-LAST:event_volverMenuActionPerformed
 
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
 
         LogicaAperturaCuenta agregarCuenta = new LogicaAperturaCuenta();
-
+        
+        String DPI = entradaDPI.getText();
+        agregarCuenta.buscarDpi(DPI);
+        if ("Cliente no encontrado".equals(agregarCuenta.getNombreCliente())) {
+            javax.swing.JOptionPane.showMessageDialog(this, "DPI no encontrado. No se puede crear la cuenta.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         String montoInicial = ingresoMontoInicial.getText();
         String tipoDeCuenta = (String) jComboBox1.getSelectedItem();
         int numeroDeCuenta = LogicaAperturaCuenta.generarNumeroDeCuenta(tipoDeCuenta);
         numeroCuenta.setText(Integer.toString(numeroDeCuenta));
-        String DPI = entradaDPI.getText();
+
         String fecha = AperturaSalidaFecha.getText();
 
         String numeroCuentaTexto = numeroCuenta.getText();
         agregarCuenta.nuevaCuenta(DPI, numeroCuentaTexto, tipoDeCuenta, montoInicial, fecha);
-        
+
         String noCuenta = agregarCuenta.getNumeroCuenta();
         String montoCuenta = agregarCuenta.getMontoInicial();
-        
+
         agregarCuenta.saldoCuentas(noCuenta, montoCuenta);
-        
-        
+        agregarCuenta.buscarDpi(DPI);
+
+
     }//GEN-LAST:event_botonConfirmarActionPerformed
 
     private void entradaDPIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entradaDPIActionPerformed
