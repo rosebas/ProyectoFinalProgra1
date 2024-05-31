@@ -200,7 +200,7 @@ public class RegistroCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRetornarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRetornarActionPerformed
-        MenuPrincipal retornar = new MenuPrincipal();
+        MenuPrincipalCo retornar = new MenuPrincipalCo();
         this.setVisible(false);
         retornar.setVisible(true);
     }//GEN-LAST:event_botonRetornarActionPerformed

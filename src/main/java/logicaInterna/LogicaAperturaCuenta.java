@@ -75,7 +75,8 @@ public class LogicaAperturaCuenta {
             lector = new FileReader(rutaArchivoClientesTxt);
             br = new BufferedReader(lector);
             String linea;
-
+           boolean encontrado = false;
+           
             while ((linea = br.readLine()) != null) {
                 String[] partesLinea = linea.split(",");
 
@@ -83,14 +84,29 @@ public class LogicaAperturaCuenta {
                 if (Dpi.equals(dpi)) {
                     setNombreCliente(partesLinea[1]);
                     setApellidoCliente(partesLinea[2]);
+                    
+                    encontrado = true;
+                    
                     break;
                 }
             }
+            if (!encontrado){
+                nombreCliente = "Cliente no encontrado";
+                apellidoCliente = "";
+            }
+           
         } catch (Exception e) {
             System.out.println("Error al leer las tareas");
         } finally {
             try {
+                if (br != null){
+                    
+                
                 br.close();
+                }
+                if (lector != null){
+                    lector.close();
+                }
             } catch (Exception e) {
                 System.out.println("Error al cerra el archivo");
             }

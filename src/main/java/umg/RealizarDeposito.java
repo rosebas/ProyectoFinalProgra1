@@ -188,9 +188,9 @@ public class RealizarDeposito extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegresarMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarMenu1ActionPerformed
-          MenuPrincipal menu = new  MenuPrincipal ();
+          MenuPrincipalCo retornar = new MenuPrincipalCo();
        this.setVisible(false);
-       menu.setVisible(true);
+       retornar.setVisible(true);
        
       
        
