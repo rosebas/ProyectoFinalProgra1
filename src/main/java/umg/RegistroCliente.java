@@ -218,8 +218,30 @@ public class RegistroCliente extends javax.swing.JFrame {
         String ocupacionCliente = registroIngresoProfesion.getText();
         String ingresosMensuales = registroIngresosMensuales.getText();
         
-        //Pasamos las variables al metodo
-        agregarCliente.nuevoCliente(Dpi, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, correoCliente, ocupacionCliente, ingresosMensuales);
+        if(Dpi.equals("") || nombreCliente.equals("") || apellidoCliente.equals("") || direccionCliente.equals("")||
+                telefonoCliente.equals("") || correoCliente.equals("") || ocupacionCliente.equals("") || ingresosMensuales.equals("")){
+            
+            javax.swing.JOptionPane.showMessageDialog(this, "Existen campos vacios, no se puede crear el cliente", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            
+        } else {
+            agregarCliente.nuevoCliente(Dpi, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, correoCliente, ocupacionCliente, ingresosMensuales);
+        }
+        
+        if(agregarCliente.getClienteCreado() == true){
+            javax.swing.JOptionPane.showMessageDialog(this, "Cliente creado exitosamente", "Confirmacion", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            registroIngresoDPI.setText("");
+            registroIngresoNombreUsuario.setText("");
+            registroIngresoApellido.setText("");
+            registroIngresoDireccion.setText("");
+            registroIngresoTelefono.setText("");
+            registroIngresoCorreo.setText("");
+            registroIngresoProfesion.setText("");
+            registroIngresosMensuales.setText("");
+            
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "No se pudo crear cliente", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void registroIngresoDPIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroIngresoDPIActionPerformed

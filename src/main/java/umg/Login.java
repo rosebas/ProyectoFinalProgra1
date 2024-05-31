@@ -113,7 +113,7 @@ public class Login extends javax.swing.JFrame {
         JOptionPane.showMessageDialog (null, "Campos vacios, ingrese algo");
         
        }else{
-           if(user.equals("liderdelclan") && password.equals("tilinesinsanos")){
+           if(user.equals("admin") && password.equals("admin")){
        
         
         MenuPrincipalCo menuPrincipal = new MenuPrincipalCo();
@@ -121,7 +121,7 @@ public class Login extends javax.swing.JFrame {
         this.dispose();
         
            }else{
-               JOptionPane.showMessageDialog(null,"Su user y contrasena son una mierda" );
+               JOptionPane.showMessageDialog(null,"Usuario y contraseña incorrectos" );
            }
     }
     }//GEN-LAST:event_jButton1ActionPerformed

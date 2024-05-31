@@ -24,18 +24,20 @@ public class LogicaActualizacionClientes {
     private String ocupacionCliente;
     private String ingresosCliente;
     private boolean cambiosCorrectos = false;
+    private boolean clienteEncontrado = false;
 
     public LogicaActualizacionClientes() {
     }
 
     public LogicaActualizacionClientes(String direccionCliente, String telefonoCliente, 
-            String correoCliente, String ocupacionCliente, String ingresosCliente, boolean cambiosCorrectos) {
+            String correoCliente, String ocupacionCliente, String ingresosCliente, boolean cambiosCorrectos, boolean clienteEncontrado) {
         this.direccionCliente = direccionCliente;
         this.telefonoCliente = telefonoCliente;
         this.correoCliente = correoCliente;
         this.ocupacionCliente = ocupacionCliente;
         this.ingresosCliente = ingresosCliente;
         this.cambiosCorrectos = cambiosCorrectos;
+        this.clienteEncontrado = clienteEncontrado;
     }
 
     public String getDireccionCliente() {
@@ -85,6 +87,14 @@ public class LogicaActualizacionClientes {
     public void setCambiosCorrectos(boolean cambiosCorrectos) {
         this.cambiosCorrectos = cambiosCorrectos;
     }
+
+    public boolean getClienteEncontrado() {
+        return clienteEncontrado;
+    }
+
+    public void setClienteEncontrado(boolean clienteEncontrado) {
+        this.clienteEncontrado = clienteEncontrado;
+    }
     
     
 
@@ -108,6 +118,7 @@ public class LogicaActualizacionClientes {
                     setCorreoCliente(partesLinea[5]);
                     setOcupacionCliente(partesLinea[6]);
                     setIngresosCliente(partesLinea[7]);
+                    setClienteEncontrado(true);
                     break;
                 }
             }

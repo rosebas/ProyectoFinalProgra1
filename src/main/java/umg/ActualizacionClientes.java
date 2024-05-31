@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package umg;
+
 import logicaInterna.LogicaActualizacionClientes;
+
 /**
  *
  * @author Keily Orellana
@@ -226,7 +228,7 @@ public class ActualizacionClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_inputActualizarCorreoClienteActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       MenuPrincipalCo retornar = new MenuPrincipalCo();
+        MenuPrincipalCo retornar = new MenuPrincipalCo();
         this.setVisible(false);
         retornar.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -243,26 +245,47 @@ public class ActualizacionClientes extends javax.swing.JFrame {
         String correo = inputActualizarCorreoCliente.getText();
         String ocupacion = inputActualizarOcupacionCliente.getText();
         String ingresos = inputActualizarIngresosClientes.getText();
-        
-        actualizarCliente.actualizarCambios(dpi, direccion, telefono, correo, ocupacion, ingresos);
-        
-        if(actualizarCliente.getCambiosCorrectos() == true){
-            mensajesActualizacion.setText("Cambios actualizados correctamente");
+
+        if (dpi.equals("") || direccion.equals("") || telefono.equals("") || correo.equals("") || ocupacion.equals("") || ingresos.equals("")) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Existen campos vacios", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         } else {
-            mensajesActualizacion.setText("Los cambios no se han podido actualizar");
+            actualizarCliente.actualizarCambios(dpi, direccion, telefono, correo, ocupacion, ingresos);
+        }
+
+        if (actualizarCliente.getCambiosCorrectos() == true) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Cliente actualizado correctamente", "Mensaje de Confirmacion", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            inputActualizarDpiClientes.setText("");
+            inputActualizarDireccionCliente.setText("");
+            inputActualizarTelefonoCliente.setText("");
+            inputActualizarCorreoCliente.setText("");
+            inputActualizarOcupacionCliente.setText("");
+            inputActualizarIngresosClientes.setText("");
+            
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "No se pudo actualizar el cliente", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_confirmarActualizacionActionPerformed
 
     private void buscarDpiActualizacionClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarDpiActualizacionClienteActionPerformed
         LogicaActualizacionClientes buscar = new LogicaActualizacionClientes();
-        buscar.buscarDpi(inputActualizarDpiClientes.getText());
-        
-        inputActualizarDireccionCliente.setText(buscar.getDireccionCliente());        
-        inputActualizarTelefonoCliente.setText(buscar.getTelefonoCliente());        
-        inputActualizarCorreoCliente.setText(buscar.getCorreoCliente());        
-        //inputActualizarCorreoCliente.setText(buscar.getCorreoCliente());        
-        inputActualizarOcupacionCliente.setText(buscar.getOcupacionCliente());        
-        inputActualizarIngresosClientes.setText(buscar.getIngresosCliente());        
+        if(inputActualizarDpiClientes.getText().equals("")){
+            
+            javax.swing.JOptionPane.showMessageDialog(this, "El campo esta vacio", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            buscar.buscarDpi(inputActualizarDpiClientes.getText());
+        }
+
+        if(buscar.getClienteEncontrado() == true){
+            inputActualizarDireccionCliente.setText(buscar.getDireccionCliente());
+            inputActualizarTelefonoCliente.setText(buscar.getTelefonoCliente());
+            inputActualizarCorreoCliente.setText(buscar.getCorreoCliente());
+            //inputActualizarCorreoCliente.setText(buscar.getCorreoCliente());        
+            inputActualizarOcupacionCliente.setText(buscar.getOcupacionCliente());
+            inputActualizarIngresosClientes.setText(buscar.getIngresosCliente());
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "No se pudo encontrar el cliente", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }   
     }//GEN-LAST:event_buscarDpiActualizacionClienteActionPerformed
 
     /**

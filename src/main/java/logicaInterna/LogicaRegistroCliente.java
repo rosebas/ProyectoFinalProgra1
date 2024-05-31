@@ -14,7 +14,24 @@ import java.io.FileWriter;
 public class LogicaRegistroCliente {
 
     String rutaArchivoClientesTxt = System.getProperty("user.dir") + "/Clientes/clientes.txt";
+    private boolean clienteCreado = false;
 
+    public LogicaRegistroCliente() {
+    }
+    
+    public LogicaRegistroCliente(boolean clienteCreado){
+        this.clienteCreado = clienteCreado;
+    }
+
+    public boolean getClienteCreado() {
+        return clienteCreado;
+    }
+
+    public void setClienteCreado(boolean clienteCreado) {
+        this.clienteCreado = clienteCreado;
+    }
+    
+    
     public void nuevoCliente(String Dpi, String nombreCliente, String apellidoCliente, String direccionCliente,
             String telefonoCliente, String correoCliente, String ocupacionCliente, String ingresosMensuales) {
 
@@ -27,6 +44,8 @@ public class LogicaRegistroCliente {
             String nuevoCliente = Dpi + "," + nombreCliente + "," + apellidoCliente + "," + 
                     direccionCliente + "," + telefonoCliente + "," + correoCliente + "," + 
                     ocupacionCliente + "," + ingresosMensuales;
+            
+            setClienteCreado(true);
             
             bw.write(nuevoCliente);
             bw.newLine();
