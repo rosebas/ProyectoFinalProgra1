@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package umg;
+
 import logicaInterna.LogicaInternaRetirarDinero;
+
 /**
  *
  * @author PC
@@ -38,7 +40,7 @@ public class RetirarDinero extends javax.swing.JFrame {
         NumeroCuenta = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         TitularCuenta = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        buscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,6 +53,11 @@ public class RetirarDinero extends javax.swing.JFrame {
         jLabel2.setText("Monto a retirar");
 
         RetirarDinero.setText("Retirar");
+        RetirarDinero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RetirarDineroActionPerformed(evt);
+            }
+        });
 
         RegresarMenu.setText("Regresar al menú");
         RegresarMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -75,10 +82,10 @@ public class RetirarDinero extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Ingresar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buscar.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buscarActionPerformed(evt);
             }
         });
 
@@ -111,7 +118,7 @@ public class RetirarDinero extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(retirarMontoDinero, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(buscar)
                         .addGap(13, 13, 13)))
                 .addGap(48, 48, 48))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +142,7 @@ public class RetirarDinero extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(TitularCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(buscar)
                 .addGap(46, 46, 46)
                 .addComponent(jLabel2)
                 .addGap(3, 3, 3)
@@ -176,9 +183,9 @@ public class RetirarDinero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegresarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarMenuActionPerformed
-       MenuPrincipal menu = new  MenuPrincipal ();
-       this.setVisible(false);
-       menu.setVisible(true);
+        MenuPrincipal menu = new MenuPrincipal();
+        this.setVisible(false);
+        menu.setVisible(true);
     }//GEN-LAST:event_RegresarMenuActionPerformed
 
     private void NumeroCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumeroCuentaActionPerformed
@@ -189,13 +196,24 @@ public class RetirarDinero extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TitularCuentaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       LogicaInternaRetirarDinero buscar = new LogicaInternaRetirarDinero();
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        LogicaInternaRetirarDinero buscar = new LogicaInternaRetirarDinero();
         buscar.buscarNumeroCuenta(NumeroCuenta.getText());
-         String parte1 = buscar.getNombreCliente();
-         String parte2 = buscar.getApellidoCliente();
-         TitularCuenta.setText(parte1 +" "+ parte2);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if (buscar.getClienteEncontrado() == true) {
+            String parte1 = buscar.getNombreCliente();
+            String parte2 = buscar.getApellidoCliente();
+            TitularCuenta.setText(parte1 + " " + parte2);
+        }else{
+            TitularCuenta.setText("Cuenta  no encontrado");
+        }
+
+    }//GEN-LAST:event_buscarActionPerformed
+
+    private void RetirarDineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetirarDineroActionPerformed
+       LogicaInternaRetirarDinero retirar = new LogicaInternaRetirarDinero();
+       retirar.retirar(NumeroCuenta.getText(), retirarMontoDinero.getText());
+    
+    }//GEN-LAST:event_RetirarDineroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,7 +255,7 @@ public class RetirarDinero extends javax.swing.JFrame {
     private javax.swing.JButton RegresarMenu;
     private javax.swing.JButton RetirarDinero;
     private javax.swing.JTextField TitularCuenta;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton buscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
