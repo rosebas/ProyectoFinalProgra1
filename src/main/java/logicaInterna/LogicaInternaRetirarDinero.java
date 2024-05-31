@@ -8,7 +8,6 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,17 +29,20 @@ public class LogicaInternaRetirarDinero {
     private boolean clienteEncontrado = false;
     private String montoInicial;
     private boolean montoEncontrado = false;
+    private boolean cuentaEncontrada = false;
 
     public LogicaInternaRetirarDinero() {
     }
 
-    public LogicaInternaRetirarDinero(String dpi, String nombreCliente, String apellidoCliente, boolean clienteEncontrado, String montoInicial) {
+    public LogicaInternaRetirarDinero(String dpi, String nombreCliente, String apellidoCliente, boolean clienteEncontrado, String montoInicial,
+            boolean montoEncontrado, boolean cuentaEncontrada) {
         this.dpi = dpi;
         this.nombreCliente = nombreCliente;
         this.apellidoCliente = apellidoCliente;
         this.clienteEncontrado = clienteEncontrado;
         this.montoInicial = montoInicial;
         this.montoEncontrado = montoEncontrado;
+        this.cuentaEncontrada = cuentaEncontrada;
 
     }
 
@@ -100,6 +102,16 @@ public class LogicaInternaRetirarDinero {
         this.montoEncontrado = montoEncontrado;
     }
 
+    public boolean getCuentaEncontrada() {
+        return cuentaEncontrada;
+    }
+
+    public void setCuentaEncontrada(boolean cuentaEncontrada) {
+        this.cuentaEncontrada = cuentaEncontrada;
+    }
+
+    
+    
     public void buscarNumeroCuenta(String NumeroDeCuenta) {
         FileReader lector = null;
         BufferedReader br = null;
@@ -174,7 +186,7 @@ public class LogicaInternaRetirarDinero {
             br = new BufferedReader(lector);
             StringBuilder contenido = new StringBuilder();
             String linea;
-            boolean cuentaEncontrada = false;
+            //boolean cuentaEncontrada = false;
             double saldoActual = 0;
 
             while ((linea = br.readLine()) != null) {
@@ -185,7 +197,7 @@ public class LogicaInternaRetirarDinero {
                     saldoActual = Double.parseDouble(partesLinea[1]);
                     setMontoInicial(partesLinea[1]);
                     setMontoEncontrado(true);
-                    cuentaEncontrada = true;
+                    setCuentaEncontrada(true);
 
                     double montoARetirar = Double.parseDouble(montoRetirado);
                     if (montoARetirar <= saldoActual) {
@@ -203,7 +215,7 @@ public class LogicaInternaRetirarDinero {
 
             br.close();
 
-            if (cuentaEncontrada) {
+            if (getCuentaEncontrada() == true) {
                 escritor = new FileWriter(rutaArchivoSaldosTxt);
                 bw = new BufferedWriter(escritor);
                 bw.write(contenido.toString());
@@ -228,14 +240,15 @@ public class LogicaInternaRetirarDinero {
         }
     }
 
-    private void registrarOperacion(String numeroCuenta, double montoRetirado) {
+    public void registrarOperacion(String numeroCuenta, double montoRetirado) {
         FileWriter escritor = null;
         BufferedWriter bw = null;
 
         try {
             escritor = new FileWriter(rutaArchivoOperacionesTxt, true);
             bw = new BufferedWriter(escritor);
-            String operacion = numeroCuenta + "," + montoRetirado + "," + "RETIRO" + "," + System.currentTimeMillis();
+            String montoString = Double.toString(montoRetirado);
+            String operacion = numeroCuenta + "," + montoString + "," + "RETIRO" + "," + System.currentTimeMillis();
             bw.write(operacion);
             bw.newLine();
             bw.close();

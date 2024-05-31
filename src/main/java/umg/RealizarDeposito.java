@@ -205,16 +205,21 @@ public class RealizarDeposito extends javax.swing.JFrame {
     }//GEN-LAST:event_depositoIngresoCuentaActionPerformed
 
     private void DepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepositarActionPerformed
-            
+        LogicaInternaDeposito depositar = new LogicaInternaDeposito();
+        depositar.depositar(depositoIngresoCuenta.getText(), depositarMontoDeposito.getText());
     }//GEN-LAST:event_DepositarActionPerformed
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
-         LogicaInternaDeposito buscar = new LogicaInternaDeposito();
-         buscar.buscarNumeroCuenta(depositoIngresoCuenta.getText());
-         String parte1 = buscar.getNombreCliente();
-         String parte2 = buscar.getApellidoCliente();
-         nombreDepositar.setText(parte1 +" "+ parte2);
-         
+        LogicaInternaDeposito buscar = new LogicaInternaDeposito();
+        buscar.buscarNumeroCuenta(depositoIngresoCuenta.getText());
+        if (buscar.getClienteEncontrado() == true) {
+            String parte1 = buscar.getNombreCliente();
+            String parte2 = buscar.getApellidoCliente();
+            nombreDepositar.setText(parte1 + " " + parte2);
+        }else{
+            nombreDepositar.setText("Cuenta  no encontrado");
+        }
+
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     /**

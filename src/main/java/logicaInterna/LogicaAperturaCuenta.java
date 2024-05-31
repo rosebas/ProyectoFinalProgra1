@@ -134,7 +134,7 @@ public class LogicaAperturaCuenta {
             escritor = new FileWriter(rutaArchivoSaldosTxt, true);
             bw = new BufferedWriter(escritor);
             
-            String subirSaldos = numeroCuenta + " " + montoInicial;
+            String subirSaldos = numeroCuenta + "," + montoInicial;
             bw.write(subirSaldos);
             bw.newLine();
 
