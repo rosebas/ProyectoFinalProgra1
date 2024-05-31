@@ -183,15 +183,11 @@ public class RetirarDinero extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegresarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarMenuActionPerformed
-<<<<<<< HEAD
+
        MenuPrincipalCo menu = new  MenuPrincipalCo ();
        this.setVisible(false);
        menu.setVisible(true);
-=======
-        MenuPrincipal menu = new MenuPrincipal();
-        this.setVisible(false);
-        menu.setVisible(true);
->>>>>>> f3493b23ada644f50ada5c651d0e831dd589c712
+
     }//GEN-LAST:event_RegresarMenuActionPerformed
 
     private void NumeroCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumeroCuentaActionPerformed
