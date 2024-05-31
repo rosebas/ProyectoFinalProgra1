@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.time.LocalDate;
 
 /**
  *
@@ -17,11 +18,11 @@ public class LogicaInternaRetirarDinero {
 
     LogicaAperturaCuenta cuenta = new LogicaAperturaCuenta();
     String rutaArchivoClientesTxt = System.getProperty("user.dir") + "/Clientes/clientes.txt";
-
     String rutaArchivoAperturaCuentaTxt = System.getProperty("user.dir") + "/CuentasAperturadas/cuentasAperturadas.txt";
-
     String rutaArchivoOperacionesTxt = System.getProperty("user.dir") + "/Operaciones/operaciones.txt";
     String rutaArchivoSaldosTxt = System.getProperty("user.dir") + "/Saldos/saldos.txt";
+    LocalDate fechaHoy = LocalDate.now();
+    String hoy = fechaHoy.toString();
 
     private String dpi;
     private String nombreCliente;
@@ -30,12 +31,13 @@ public class LogicaInternaRetirarDinero {
     private String montoInicial;
     private boolean montoEncontrado = false;
     private boolean cuentaEncontrada = false;
+    private boolean saldoInsuficiente = false;
 
     public LogicaInternaRetirarDinero() {
     }
 
     public LogicaInternaRetirarDinero(String dpi, String nombreCliente, String apellidoCliente, boolean clienteEncontrado, String montoInicial,
-            boolean montoEncontrado, boolean cuentaEncontrada) {
+            boolean montoEncontrado, boolean cuentaEncontrada, boolean saldoInsuficiente) {
         this.dpi = dpi;
         this.nombreCliente = nombreCliente;
         this.apellidoCliente = apellidoCliente;
@@ -43,6 +45,7 @@ public class LogicaInternaRetirarDinero {
         this.montoInicial = montoInicial;
         this.montoEncontrado = montoEncontrado;
         this.cuentaEncontrada = cuentaEncontrada;
+        this.saldoInsuficiente = saldoInsuficiente;
 
     }
 
@@ -110,6 +113,15 @@ public class LogicaInternaRetirarDinero {
         this.cuentaEncontrada = cuentaEncontrada;
     }
 
+    public boolean isSaldoInsuficiente() {
+        return saldoInsuficiente;
+    }
+
+    public void setSaldoInsuficiente(boolean saldoInsuficiente) {
+        this.saldoInsuficiente = saldoInsuficiente;
+    }
+
+    
     
     
     public void buscarNumeroCuenta(String NumeroDeCuenta) {
@@ -206,6 +218,7 @@ public class LogicaInternaRetirarDinero {
                         registrarOperacion(numeroCuenta, montoARetirar);
                     } else {
                         System.out.println("Saldo insuficiente");
+                        setSaldoInsuficiente(true);
                         contenido.append(linea).append(System.lineSeparator());
                     }
                 } else {
@@ -248,7 +261,7 @@ public class LogicaInternaRetirarDinero {
             escritor = new FileWriter(rutaArchivoOperacionesTxt, true);
             bw = new BufferedWriter(escritor);
             String montoString = Double.toString(montoRetirado);
-            String operacion = numeroCuenta + "," + montoString + "," + "RETIRO" + "," + System.currentTimeMillis();
+            String operacion = numeroCuenta + "," + montoString + "," + "RETIRO" + "," + hoy;
             bw.write(operacion);
             bw.newLine();
             bw.close();

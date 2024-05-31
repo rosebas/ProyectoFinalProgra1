@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.time.LocalDate;
 
 /**
  *
@@ -19,6 +20,8 @@ public class LogicaInternaDeposito {
     String rutaArchivoAperturaCuentaTxt = System.getProperty("user.dir") + "/CuentasAperturadas/cuentasAperturadas.txt";
     String rutaArchivoOperacionesTxt = System.getProperty("user.dir") + "/Operaciones/operaciones.txt";
     String rutaArchivoSaldosTxt = System.getProperty("user.dir") + "/Saldos/saldos.txt";
+    LocalDate fechaHoy = LocalDate.now();
+    String hoy = fechaHoy.toString();
 
     private String dpi;
     private String nombreCliente;
@@ -27,12 +30,13 @@ public class LogicaInternaDeposito {
     private String montoInicial;
     private boolean montoEncontrado = false;
     private boolean cuentaEncontrada = false;
+    private boolean setSaldoInsuficiente = false;
 
     public LogicaInternaDeposito() {
     }
 
     public LogicaInternaDeposito(String dpi, String nombreCliente, String apellidoCliente, boolean clienteEncontrado, String montoInicial,
-            boolean montoEncontrado, boolean cuentaEncontrada) {
+            boolean montoEncontrado, boolean cuentaEncontrada, boolean setSaldoInsuficiente) {
         this.dpi = dpi;
         this.nombreCliente = nombreCliente;
         this.apellidoCliente = apellidoCliente;
@@ -40,6 +44,7 @@ public class LogicaInternaDeposito {
         this.montoInicial = montoInicial;
         this.montoEncontrado = montoEncontrado;
         this.cuentaEncontrada = cuentaEncontrada;
+        this.setSaldoInsuficiente = setSaldoInsuficiente;
 
     }
 
@@ -97,6 +102,14 @@ public class LogicaInternaDeposito {
 
     public void setCuentaEncontrada(boolean cuentaEncontrada) {
         this.cuentaEncontrada = cuentaEncontrada;
+    }
+
+    public boolean setSaldoInsuficiente() {
+        return setSaldoInsuficiente;
+    }
+
+    public void setSaldoInsuficiente(boolean saldoSuficiente) {
+        this.setSaldoInsuficiente = saldoSuficiente;
     }
     
     
@@ -191,6 +204,7 @@ public class LogicaInternaDeposito {
                         registrarOperacion(numeroCuenta, montoADepositar);
                     } else {
                         System.out.println("Saldo insuficiente");
+                        setSaldoInsuficiente(true);
                         contenido.append(linea).append(System.lineSeparator());
                     }
                 } else {
@@ -233,7 +247,7 @@ public class LogicaInternaDeposito {
             escritor = new FileWriter(rutaArchivoOperacionesTxt, true);
             bw = new BufferedWriter(escritor);
             String montoString = Double.toString(montoDepositado);
-            String operacion = numeroCuenta + "," + montoString + "," + "DEPOSITO" + "," + System.currentTimeMillis();
+            String operacion = numeroCuenta + "," + montoString + "," + "DEPOSITO" + "," + hoy;
             bw.write(operacion);
             bw.newLine();
             bw.close();

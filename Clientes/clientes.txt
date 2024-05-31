@@ -4,3 +4,4 @@
 123456789,Javier,Fajardo,Sanarate,58859878,javifa@gmail,estudiante,3800
 3052523250201,Glendi,Orellana,Guastatoya,54688754,glendi.paty.gmail.com,programador,3500
 3085123450101,Marlon,Lopez,Guastatoya,52535684,marlon.lopez.gmail,programador,15000
+0168020110102,Noe,Portillo,Guastatoya,54657898,noe.gmail,Programador,30000

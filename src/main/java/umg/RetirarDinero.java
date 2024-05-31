@@ -184,9 +184,9 @@ public class RetirarDinero extends javax.swing.JFrame {
 
     private void RegresarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarMenuActionPerformed
 
-       MenuPrincipalCo menu = new  MenuPrincipalCo ();
-       this.setVisible(false);
-       menu.setVisible(true);
+        MenuPrincipalCo menu = new MenuPrincipalCo();
+        this.setVisible(false);
+        menu.setVisible(true);
 
     }//GEN-LAST:event_RegresarMenuActionPerformed
 
@@ -200,21 +200,43 @@ public class RetirarDinero extends javax.swing.JFrame {
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
         LogicaInternaRetirarDinero buscar = new LogicaInternaRetirarDinero();
-        buscar.buscarNumeroCuenta(NumeroCuenta.getText());
-        if (buscar.getClienteEncontrado() == true) {
-            String parte1 = buscar.getNombreCliente();
-            String parte2 = buscar.getApellidoCliente();
-            TitularCuenta.setText(parte1 + " " + parte2);
-        }else{
-            TitularCuenta.setText("Cuenta  no encontrado");
+
+        if (NumeroCuenta.getText().equals("")) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Existen campo(s) vacios", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            buscar.buscarNumeroCuenta(NumeroCuenta.getText());
+            if (buscar.getClienteEncontrado() == true) {
+                String parte1 = buscar.getNombreCliente();
+                String parte2 = buscar.getApellidoCliente();
+                TitularCuenta.setText(parte1 + " " + parte2);
+            } else {
+                TitularCuenta.setText("Cuenta  no encontrada");
+            }
         }
 
     }//GEN-LAST:event_buscarActionPerformed
 
     private void RetirarDineroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RetirarDineroActionPerformed
-       LogicaInternaRetirarDinero retirar = new LogicaInternaRetirarDinero();
-       retirar.retirar(NumeroCuenta.getText(), retirarMontoDinero.getText());
-    
+        LogicaInternaRetirarDinero retirar = new LogicaInternaRetirarDinero();
+        
+        if(NumeroCuenta.getText().equals("") || retirarMontoDinero.getText().equals("")){
+            javax.swing.JOptionPane.showMessageDialog(this, "Existen campo(s) vacios", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            retirar.retirar(NumeroCuenta.getText(), retirarMontoDinero.getText());
+            if(retirar.getCuentaEncontrada() == true && retirar.isSaldoInsuficiente() == false){
+                javax.swing.JOptionPane.showMessageDialog(this, "Retiro exitoso", "Mensaje de confirmacion", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                retirarMontoDinero.setText("");
+                NumeroCuenta.setText("");
+                TitularCuenta.setText("");
+                
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "Saldo insuficiente en la cuenta", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+
+            }
+        }
+
     }//GEN-LAST:event_RetirarDineroActionPerformed
 
     /**

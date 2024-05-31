@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package umg;
+
 import logicaInterna.LogicaInternaDeposito;
-import java.time.LocalDate;
+
 /**
  *
  * @author PC
@@ -17,12 +18,9 @@ public class RealizarDeposito extends javax.swing.JFrame {
     public RealizarDeposito() {
         initComponents();
         this.setTitle("Apertura de Cuenta");
-         this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
         nombreDepositar.setEditable(false);
-         LocalDate fecha = LocalDate.now();
-       String hoy = fecha.toString();
-       fechaHoy.setText(hoy);
-       
+
     }
 
     /**
@@ -45,7 +43,6 @@ public class RealizarDeposito extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         botonBuscar = new javax.swing.JButton();
         nombreDepositar = new javax.swing.JTextField();
-        fechaHoy = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,13 +104,12 @@ public class RealizarDeposito extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(99, 99, 99)
                         .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(fechaHoy, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(87, 87, 87)
-                        .addComponent(nombreDepositar))
+                        .addComponent(nombreDepositar, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,9 +135,7 @@ public class RealizarDeposito extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(fechaHoy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
@@ -188,37 +182,59 @@ public class RealizarDeposito extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegresarMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarMenu1ActionPerformed
-          MenuPrincipalCo retornar = new MenuPrincipalCo();
-       this.setVisible(false);
-       retornar.setVisible(true);
-       
-      
-       
+        MenuPrincipalCo retornar = new MenuPrincipalCo();
+        this.setVisible(false);
+        retornar.setVisible(true);
+
+
     }//GEN-LAST:event_RegresarMenu1ActionPerformed
 
     private void depositarMontoDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositarMontoDepositoActionPerformed
-        
+
     }//GEN-LAST:event_depositarMontoDepositoActionPerformed
 
     private void depositoIngresoCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depositoIngresoCuentaActionPerformed
-        
+
     }//GEN-LAST:event_depositoIngresoCuentaActionPerformed
 
     private void DepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepositarActionPerformed
         LogicaInternaDeposito depositar = new LogicaInternaDeposito();
-        depositar.depositar(depositoIngresoCuenta.getText(), depositarMontoDeposito.getText());
+        if (depositoIngresoCuenta.getText().equals("") || depositarMontoDeposito.getText().equals("")) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Existen campo(s) vacios", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            depositar.depositar(depositoIngresoCuenta.getText(), depositarMontoDeposito.getText());
+
+            if (depositar.getCuentaEncontrada() == true) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Deposito realizado correctamente", "Mensaje de confirmacion", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                depositoIngresoCuenta.setText("");
+                depositarMontoDeposito.setText("");
+                nombreDepositar.setText("");
+
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "No se ha podido realizar el deposito, revise valores", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+
+            }
+        }
     }//GEN-LAST:event_DepositarActionPerformed
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
         LogicaInternaDeposito buscar = new LogicaInternaDeposito();
-        buscar.buscarNumeroCuenta(depositoIngresoCuenta.getText());
-        if (buscar.getClienteEncontrado() == true) {
-            String parte1 = buscar.getNombreCliente();
-            String parte2 = buscar.getApellidoCliente();
-            nombreDepositar.setText(parte1 + " " + parte2);
-        }else{
-            nombreDepositar.setText("Cuenta  no encontrado");
+
+        if (depositoIngresoCuenta.getText().equals("")) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El campo esta vacio.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        } else {
+            buscar.buscarNumeroCuenta(depositoIngresoCuenta.getText());
+
+            if (buscar.getClienteEncontrado() == true) {
+                String parte1 = buscar.getNombreCliente();
+                String parte2 = buscar.getApellidoCliente();
+                nombreDepositar.setText(parte1 + " " + parte2);
+            } else {
+                nombreDepositar.setText("Cuenta  no encontrada");
+            }
         }
+
 
     }//GEN-LAST:event_botonBuscarActionPerformed
 
@@ -263,7 +279,6 @@ public class RealizarDeposito extends javax.swing.JFrame {
     private javax.swing.JButton botonBuscar;
     private javax.swing.JTextField depositarMontoDeposito;
     private javax.swing.JTextField depositoIngresoCuenta;
-    private javax.swing.JTextField fechaHoy;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
