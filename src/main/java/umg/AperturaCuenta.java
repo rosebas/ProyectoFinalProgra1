@@ -258,7 +258,6 @@ public class AperturaCuenta extends javax.swing.JFrame {
         mostrarNombre.setText("");
         entradaDPI.setText("");
         numeroCuenta.setText("");
-        AperturaSalidaFecha.setText("");
         ingresoMontoInicial.setText("");
         
         
