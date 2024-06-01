@@ -77,6 +77,11 @@ public class MenuPrincipalCo extends javax.swing.JFrame {
         });
 
         jButton6.setText("Reportes");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("Cerrar Sesion");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -181,6 +186,12 @@ public class MenuPrincipalCo extends javax.swing.JFrame {
         this.setVisible(false);
         login.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        Reportes reportes = new Reportes();
+        this.setVisible(false);
+        reportes.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments

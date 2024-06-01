@@ -186,7 +186,7 @@ public class AperturaCuenta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void volverMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverMenuActionPerformed
-       MenuPrincipalCo retornar = new MenuPrincipalCo();
+        MenuPrincipalCo retornar = new MenuPrincipalCo();
         this.setVisible(false);
         retornar.setVisible(true);
     }//GEN-LAST:event_volverMenuActionPerformed
@@ -194,26 +194,26 @@ public class AperturaCuenta extends javax.swing.JFrame {
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
 
         LogicaAperturaCuenta agregarCuenta = new LogicaAperturaCuenta();
-        
+
         String DPI = entradaDPI.getText();
+
         agregarCuenta.buscarDpi(DPI);
+
         if ("Cliente no encontrado".equals(agregarCuenta.getNombreCliente())) {
-            javax.swing.JOptionPane.showMessageDialog(this, "DPI no encontrado. No se puede crear la cuenta.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+
+            javax.swing.JOptionPane.showMessageDialog(AperturaCuenta.this, "DPI no encontrado. No se puede crear la cuenta.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             return;
         }
+
         String montoInicial = ingresoMontoInicial.getText();
         String tipoDeCuenta = (String) jComboBox1.getSelectedItem();
-        int numeroDeCuenta = LogicaAperturaCuenta.generarNumeroDeCuenta(tipoDeCuenta);
+        int numeroDeCuenta = agregarCuenta.generarNumeroDeCuenta(tipoDeCuenta);
         numeroCuenta.setText(Integer.toString(numeroDeCuenta));
-
         String fecha = AperturaSalidaFecha.getText();
-
         String numeroCuentaTexto = numeroCuenta.getText();
         agregarCuenta.nuevaCuenta(DPI, numeroCuentaTexto, tipoDeCuenta, montoInicial, fecha);
-
         String noCuenta = agregarCuenta.getNumeroCuenta();
         String montoCuenta = agregarCuenta.getMontoInicial();
-
         agregarCuenta.saldoCuentas(noCuenta, montoCuenta);
         agregarCuenta.buscarDpi(DPI);
 

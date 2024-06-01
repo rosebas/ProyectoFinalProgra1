@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package logicaInterna;
 
 import java.io.BufferedReader;
@@ -15,8 +11,7 @@ public class LogicaAperturaCuenta {
     private String apellidoCliente;
     private String numeroCuenta;
     private String montoInicial;
-    
-  
+
     public LogicaAperturaCuenta() {
     }
 
@@ -58,9 +53,7 @@ public class LogicaAperturaCuenta {
     public void setMontoInicial(String montoInicial) {
         this.montoInicial = montoInicial;
     }
-    
-    
-    
+
     String rutaArchivoClientesTxt = System.getProperty("user.dir") + "/Clientes/clientes.txt";
     String rutaArchivoSaldosTxt = System.getProperty("user.dir") + "/Saldos/saldos.txt";
     String rutaArchivoAperturaCuentaTxt = System.getProperty("user.dir") + "/CuentasAperturadas/cuentasAperturadas.txt";
@@ -75,8 +68,8 @@ public class LogicaAperturaCuenta {
             lector = new FileReader(rutaArchivoClientesTxt);
             br = new BufferedReader(lector);
             String linea;
-           boolean encontrado = false;
-           
+            boolean encontrado = false;
+
             while ((linea = br.readLine()) != null) {
                 String[] partesLinea = linea.split(",");
 
@@ -84,40 +77,38 @@ public class LogicaAperturaCuenta {
                 if (Dpi.equals(dpi)) {
                     setNombreCliente(partesLinea[1]);
                     setApellidoCliente(partesLinea[2]);
-                    
+
                     encontrado = true;
-                    
+
                     break;
                 }
             }
-            if (!encontrado){
+            if (!encontrado) {
                 nombreCliente = "Cliente no encontrado";
                 apellidoCliente = "";
             }
-           
+
         } catch (Exception e) {
             System.out.println("Error al leer las tareas");
         } finally {
             try {
-                if (br != null){
-                    
-                
-                br.close();
+                if (br != null) {
+                    br.close();
                 }
-                if (lector != null){
+                if (lector != null) {
                     lector.close();
                 }
             } catch (Exception e) {
-                System.out.println("Error al cerra el archivo");
+                System.out.println("Error al cerrar el archivo");
             }
         }
     }
 
     public void nuevaCuenta(String DPI, String numeroCuenta, String tipoCuenta, String montoInicial, String fecha) {
-        
+
         setMontoInicial(montoInicial);
         setNumeroCuenta(numeroCuenta);
-        
+
         FileWriter escritor = null;
         BufferedWriter bw = null;
 
@@ -126,30 +117,34 @@ public class LogicaAperturaCuenta {
             bw = new BufferedWriter(escritor);
             String nuevaCuenta = DPI + "," + numeroCuenta + "," + tipoCuenta + ","
                     + montoInicial + "," + fecha;
-            
+
             bw.write(nuevaCuenta);
             bw.newLine();
-           
+
         } catch (Exception e) {
             System.out.println("Error al guardar el archivo " + e.getMessage());
         } finally {
-
             try {
-                bw.close();
+                if (bw != null) {
+                    bw.close();
+                }
+                if (escritor != null) {
+                    escritor.close();
+                }
             } catch (Exception e) {
                 System.out.println("Error al cerrar el archivo " + e.getMessage());
             }
         }
     }
-    
-    public void saldoCuentas(String numeroCuenta, String montoInicial){
+
+    public void saldoCuentas(String numeroCuenta, String montoInicial) {
         FileWriter escritor = null;
         BufferedWriter bw = null;
 
         try {
             escritor = new FileWriter(rutaArchivoSaldosTxt, true);
             bw = new BufferedWriter(escritor);
-            
+
             String subirSaldos = numeroCuenta + "," + montoInicial;
             bw.write(subirSaldos);
             bw.newLine();
@@ -157,21 +152,51 @@ public class LogicaAperturaCuenta {
         } catch (Exception e) {
             System.out.println("Error al guardar el archivo " + e.getMessage());
         } finally {
-
             try {
-                bw.close();
+                if (bw != null) {
+                    bw.close();
+                }
+                if (escritor != null) {
+                    escritor.close();
+                }
             } catch (Exception e) {
                 System.out.println("Error al cerrar el archivo " + e.getMessage());
             }
         }
     }
 
-    public static int generarNumeroDeCuenta(String tipoDeCuenta) {
-        if (tipoDeCuenta.equalsIgnoreCase("Monetaria")) {
-            return ++cuentaMonetaria;
-        } else if (tipoDeCuenta.equalsIgnoreCase("Ahorro")) {
-            return ++cuentaAhorro;
-        }
-        return -1;
+  public int generarNumeroDeCuenta(String tipoDeCuenta) {
+   
+    int ultimoNumeroDeCuenta = leerUltimoNumeroDeCuentaDesdeArchivo(tipoDeCuenta);
+
+  
+    int nuevoNumeroDeCuenta = -1;
+    if (tipoDeCuenta.equalsIgnoreCase("Monetaria")) {
+        nuevoNumeroDeCuenta = ++ultimoNumeroDeCuenta;
+    } else if (tipoDeCuenta.equalsIgnoreCase("Ahorro")) {
+        nuevoNumeroDeCuenta = ++ultimoNumeroDeCuenta;
     }
+  
+    return nuevoNumeroDeCuenta;
+}
+
+private int leerUltimoNumeroDeCuentaDesdeArchivo(String tipoDeCuenta) {
+    int ultimoNumeroDeCuenta = tipoDeCuenta.equalsIgnoreCase("Monetaria") ? cuentaMonetaria : cuentaAhorro;
+    try (FileReader lector = new FileReader(rutaArchivoAperturaCuentaTxt);
+         BufferedReader br = new BufferedReader(lector)) {
+        String linea;
+        while ((linea = br.readLine()) != null) {
+            String[] partesLinea = linea.split(",");
+            if (partesLinea[2].equalsIgnoreCase(tipoDeCuenta)) {
+                int numeroDeCuenta = Integer.parseInt(partesLinea[1]);
+                if (numeroDeCuenta > ultimoNumeroDeCuenta) {
+                    ultimoNumeroDeCuenta = numeroDeCuenta;
+                }
+            }
+        }
+    } catch (Exception e) {
+        System.out.println("Error al leer el último número de cuenta desde el archivo: " + e.getMessage());
+    }
+    return ultimoNumeroDeCuenta;
+}
 }
